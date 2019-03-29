@@ -2,15 +2,14 @@ module Builder
   class PublishMessage
     include Mandate
 
-    attr_reader :topic, :data, :async
-    def initialize(topic, data, async: true)
+    attr_reader :topic, :data
+    def initialize(topic, data)
       @topic = topic
       @data = data
-      @async = async
     end
 
     def call
-      client.publish(topic, data, async: async)
+      client.publish(topic, data, async: false)
     end
 
     private

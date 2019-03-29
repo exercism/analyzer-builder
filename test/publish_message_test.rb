@@ -8,21 +8,10 @@ module Builder
       data = mock
 
       client = mock
-      client.expects(:publish).with(topic, data, async: true)
-      Propono.expects(:configure_client).returns(client)
-
-      PublishMessage.(topic, data)
-    end
-
-    def test_publishes_to_propono_with_async_false
-      topic = mock
-      data = mock
-
-      client = mock
       client.expects(:publish).with(topic, data, async: false)
       Propono.expects(:configure_client).returns(client)
 
-      PublishMessage.(topic, data, async: false)
+      PublishMessage.(topic, data)
     end
   end
 end
