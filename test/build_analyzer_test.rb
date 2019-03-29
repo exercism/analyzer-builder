@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Builder
-  class BuildContainerTest < Minitest::Test
+  class BuildAnalyzerTest < Minitest::Test
 
     def test_calls_system_and_propono_with_the_correct_params_and
       track_slug = "ruby"
@@ -13,14 +13,14 @@ module Builder
         image_name: "exercism-analyzer-#{track_slug}:#{tag}"
       )
 
-      Builder::BuildContainer.(track_slug, tag)
+      Builder::BuildAnalyzer.(track_slug, tag)
     end
 
     def test_does_not_publish_if_kernel_fails
       Kernel.expects(:system).returns(false)
       PublishMessage.expects(:call).never
 
-      Builder::BuildContainer.("foo", "v1.3.4")
+      Builder::BuildAnalyzer.("foo", "v1.3.4")
     end
   end
 end

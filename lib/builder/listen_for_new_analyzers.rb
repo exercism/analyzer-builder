@@ -7,7 +7,7 @@ module Builder
         track_slug = message[:track_slug]
         tag = message[:tag]
 
-        Builder::BuildContainer.(track_slug, tag)
+        Builder::BuildAnalyzer.(track_slug, tag)
       end
     end
 

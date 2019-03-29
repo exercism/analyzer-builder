@@ -1,5 +1,5 @@
 module Builder
-  class BuildContainer
+  class BuildAnalyzer
     include Mandate
 
     initialize_with :track_slug, :tag
