@@ -6,7 +6,8 @@ module Builder
       client.listen(:analyzer_ready_to_build) do |message|
         track_slug = message[:track_slug]
         tag = message[:tag]
-        p "Build analyzer for #{track_slug} for tag##{tag}"
+
+        Builder::BuildContainer.(track_slug, tag)
       end
     end
 
