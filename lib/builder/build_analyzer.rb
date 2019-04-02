@@ -5,7 +5,7 @@ module Builder
     initialize_with :track_slug, :tag
 
     def call
-      cmd = %Q{echo "Build analyzer for #{track_slug} for tag##{tag}"}
+      cmd = %Q{release_analyzer #{track_slug} #{track_slug}-analyzer:#{tag}}
       if Kernel.system(cmd)
         PublishMessage.(:analyzer_ready_to_deploy, {
           image_name: "exercism-analyzer-#{track_slug}:#{tag}"

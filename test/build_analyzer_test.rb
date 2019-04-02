@@ -5,9 +5,9 @@ module Builder
 
     def test_calls_system_and_propono_with_the_correct_params_and
       track_slug = "ruby"
-      tag = "v.1.2.3"
+      tag = "v1.2.3"
 
-      Kernel.expects(:system).with(%Q{echo "Build analyzer for #{track_slug} for tag##{tag}"}).returns(true)
+      Kernel.expects(:system).with(%Q{release_analyzer ruby ruby-analyzer:v1.2.3}).returns(true)
       PublishMessage.expects(:call).with(
         :analyzer_ready_to_deploy,
         image_name: "exercism-analyzer-#{track_slug}:#{tag}"
