@@ -10,6 +10,7 @@ module Builder
       Kernel.expects(:system).with(%Q{echo "Build analyzer for #{track_slug} for tag##{tag}"}).returns(true)
       PublishMessage.expects(:call).with(
         :analyzer_ready_to_deploy,
+        track_slug: track_slug,
         image_name: "exercism-analyzer-#{track_slug}:#{tag}"
       )
 
