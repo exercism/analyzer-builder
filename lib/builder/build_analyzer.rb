@@ -8,6 +8,7 @@ module Builder
       cmd = %Q{echo "Build analyzer for #{track_slug} for tag##{tag}"}
       if Kernel.system(cmd)
         PublishMessage.(:analyzer_ready_to_deploy, {
+          track_slug: track_slug,
           image_name: "exercism-analyzer-#{track_slug}:#{tag}"
         })
       else
